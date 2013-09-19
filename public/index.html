@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>login.</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="apple-touch-icon" href="/icon.png"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <style type="text/css">
+        body {
+            text-size: 40px;
+            font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
+                     "Helvetica Neue", Helvetica, Arial, "Lucida Grande",
+                     sans-serif; 
+            font-weight: 300;
+        }
+        div.main {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -50px -120px;
+            padding: 0;
+            width: 240px;
+
+            border: 2px solid rgba(200,200,200,1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        input[type="password"] {
+            display: inline-block;
+            margin: 0;
+            border: 0 none transparent;
+            width: 90%;
+            height: 50px;
+
+            font-size: 20px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        input[type="submit"] {
+            margin: 0;
+            border: 0 none transparent;
+            border-top: 1px solid rgba(200,200,200,1);
+            padding: 10px;
+            width: 100%;
+
+            border-radius: 0 0 10px 10px;
+            background: rgba(200,200,250,0.2);
+            font-size: 20px;
+            cursor: pointer;
+            -webkit-appearance: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <form action="/newpost" method="post">
+            <input type="password" id="password" name="password"
+                   placeholder="password">
+            <input type="submit" value="log in.">
+        </form>
+    </div>
+
+
+    <script type="text/javascript">
+        document.addEventListener("change", function(ev) {
+            if (ev.target.id === "password") {
+                if (window.localStorage) {
+                    window.localStorage["password"] = ev.target.value;
+                }
+            }
+        });
+        document.addEventListener("DOMContentLoaded", function(ev) {
+            if (window.localStorage && window.localStorage["password"]) {
+                var pass = window.localStorage["password"];
+                document.getElementById("password").value = pass;
+            }
+        });
+
+    </script>
+</body>
+</html>
