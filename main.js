@@ -1,4 +1,4 @@
-var https = require('https');
+var https = require("https");
 var express = require("express");
 var fs = require("fs");
 var hbs = require("hbs");
@@ -9,8 +9,8 @@ var cli = require("commander");
 
 var config = JSON.parse(fs.readFileSync("config.json"));
 var options = {
-    key: fs.readFileSync('key.pem'),
-    cert:fs.readFileSync('cert.pem')
+    key: fs.readFileSync("key.pem"),
+    cert:fs.readFileSync("cert.pem")
 };
 
 // Parse cmd line
@@ -24,9 +24,9 @@ cli.version("0.1")
 
 var app = express();
 app.use(express.bodyParser());
-app.set('views', __dirname + '/private/');
-app.set('view engine', 'html');
-app.engine('html', hbs.__express);
+app.set("views", __dirname + "/private/");
+app.set("view engine", "html");
+app.engine("html", hbs.__express);
 
 
 // ---- ROUTING ----
@@ -59,7 +59,7 @@ app.post("/createpost", function(req, res) {
         var write = {
             time: Date.now(),
             tz: (new Date()).getTimezoneOffset(),
-            userAgent: req.headers['user-agent'],
+            userAgent: req.headers["user-agent"],
             text: req.body.mainText,
             pos: {
                 latitude: req.body.posLat,

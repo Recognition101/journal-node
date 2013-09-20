@@ -245,13 +245,13 @@ dom.getWeather = function(el) {
     }
 
     el.className += " loading";
-    var domScript = document.createElement('script');
-    domScript.src = 'https://api.forecast.io/forecast/' +
+    var domScript = document.createElement("script");
+    domScript.src = "https://api.forecast.io/forecast/" +
                     dat.config.forecastApi + "/" + 
                     dat.crd.latitude + "," + dat.crd.longitude +
                     "?callback=dom.setWeather";
 
-    document.getElementsByTagName('head')[0].appendChild(domScript);
+    document.getElementsByTagName("head")[0].appendChild(domScript);
 };
 
 dom.setWeather = function(weather) {
